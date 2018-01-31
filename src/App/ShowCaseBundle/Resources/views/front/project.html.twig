@@ -1,0 +1,69 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {% block theme_css %}
+        {{ parent() }}
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/theme.css" rel="stylesheet">
+        <link href="css/bootstrap-reset.css" rel="stylesheet">
+        <!--external css-->
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/flexslider.css"/>
+        <link href="assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+        <!-- Custom styles for this template -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet" />
+    {% endblock theme_css %}
+    {% block custom_css %}
+        {{ parent() }}
+    {% endblock custom_css %}
+    <body>
+    {{ include('@AppShowCase/front/header.html.twig') }}
+    {{ include('@AppShowCase/front/widget/breadcrumb.html.twig', {'title': 'Projets', 'item': 'Liste des projets'}) }}
+    <div class="container projects-container">
+        <div class="project-packet">
+            <div id="" class="col-4">
+                <div class="" data-zlname="">
+                    <div class="">
+                        <h2>Meteo Guzzle lab</h2>
+                    </div>
+                    <img class="project_pic" src="http://localhost:8000/img/sun.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        {% for project in projects %}
+            <div class="project-packet">
+                <div id="" class="col-4">
+                    <div class="" data-zlname="">
+                        <div class="">
+                            <h2>{{ project.projectName }} </h2>
+                        </div>
+                        <img class="project_pic" src="{{ project.picPath }}" alt="">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(projects) }}
+        </div>
+        <!--portfolio end-->
+    </div>
+    <!--container end-->
+    <!--footer start-->
+    {% include "@AppShowCase/front/footer.html.twig" %}
+    <!--footer end-->
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script>
+        let project_items = document.querySelectorAll('.project-packet');
+        // console.log(project_items);
+        project_items = Array.from(project_items);
+        // console.log(project_items);
+        const image = document.createElement('img');
+        console.log(image);
+        // project_items.map((item) => console.log(item));
+        // project_items.map((item) => item.append(image));
+    </script>
+    </body>
+{% endblock %}

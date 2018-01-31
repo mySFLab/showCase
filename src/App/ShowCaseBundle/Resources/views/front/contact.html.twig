@@ -1,0 +1,131 @@
+{% extends "::base.html.twig" %}
+{% form_theme form 'AppShowCaseBundle:templates/form:common.html.twig' %}
+{#{% form_theme form 'App\ShowCaseBundle/' %}#}
+{% block body %}
+  {% block theme_css %}
+      {{ parent() }}
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/theme.css" rel="stylesheet">
+      <link href="css/bootstrap-reset.css" rel="stylesheet">
+      <!--external css-->
+      <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/flexslider.css"/>
+      <link href="assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+
+      <!-- Custom styles for this template -->
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/style-responsive.css" rel="stylesheet" />
+  {% endblock theme_css %}
+  {% block custom_css %}
+      {{ parent() }}
+  {% endblock custom_css %}
+
+  <body>
+     {{ include('@AppShowCase/front/header.html.twig') }}
+     {{ include('@AppShowCase/front/widget/breadcrumb.html.twig', {'title': 'Contacts', 'item': 'Prise de contact'}) }}
+     <div class="contact-map">
+         <div id="map-canvas" style="width: 100%; height: 400px"></div>
+     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-5 address">
+                <h4>ORMOY-LE-DAVIEN</h4>
+                <p>
+                    Laurent BRAU <br/>
+                    18, rue des tilleuls  <br/>
+                    60620 ORMOY-LE-DAVIEN
+                </p>
+                <br>
+                <br>
+                <br>
+                <p>
+                    <span class="muted"><a href="http://www.linkedin.com/in/laurent-brau-6571505b" target="_blank">Voir mon profil Linkedin</a></span><br/>
+                    <span class="muted"><a href="#" target="_blank">Voir mon dépot github</a></span><br/>
+                </p>
+            </div>
+            <div class="col-lg-7 col-sm-7 address">
+                <h4>Me contacter</h4>
+                <div class="contact-form">
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+
+                    {#<form role="form">#}
+                        {#<div class="form-group">#}
+                            {#<label for="name">Name</label>#}
+                            {#<input type="text" placeholder="" id="name" class="form-control">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label for="email">Email</label>#}
+                            {#<input type="text" placeholder="" id="email" class="form-control">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label for="phone">Phone</label>#}
+                            {#<input type="text" id="phone" class="form-control">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label for="type">Type d'envoi</label>#}
+                            {#<select name="type" id="type"class="form-control">#}
+                                {#<option value="sms">SMS</option>#}
+                                {#<option value="email">Email</option>#}
+                                {#<option value="email">Messagerie du site</option>#}
+                                {#<option value="email">Tous</option>#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label for="phone">Message</label>#}
+                            {#<textarea placeholder="" rows="5" class="form-control"></textarea>#}
+                        {#</div>#}
+                        {#<button class="btn btn-danger" type="submit">Envoyer</button>#}
+                    {#</form>#}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--container end-->
+
+     <!--footer start-->
+    {% include "@AppShowCase/front/footer.html.twig" %}
+     <!--footer end-->
+
+  <!-- js placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/hover-dropdown.js"></script>
+    <script type="text/javascript" src="assets/bxslider/jquery.bxslider.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
+
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
+
+
+  <script>
+
+      //google map
+      function initialize() {
+          // var myLatlng = new google.maps.LatLng(49.2362, 2.8901);
+          var myLatlng = new google.maps.LatLng(49.193852, 2.9593469999999797);
+          var mapOptions = {
+              zoom: 9,
+              scrollwheel: true,
+              center: myLatlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: 'Hello World!'
+          });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+  </script>
+
+  </body>
+{% endblock body %}

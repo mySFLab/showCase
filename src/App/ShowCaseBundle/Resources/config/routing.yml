@@ -1,0 +1,21 @@
+app_show_case_homepage:
+    path:     /
+    defaults: { _controller: AppShowCaseBundle:Front:homePage}
+app_show_case_contact:
+    path:     /contact
+    defaults: { _controller: AppShowCaseBundle:Front:contact }
+app_show_case_about:
+    path:     /about
+    defaults: { _controller: AppShowCaseBundle:Front:about }
+app_show_case_freelance:
+  path:     /freelance
+  defaults: { _controller: AppShowCaseBundle:Front:freelance }
+app_show_case_project:
+  path:     /project
+  defaults: { _controller: AppShowCaseBundle:Front:project }
+app_show_case_learning:
+  path:     /learning
+  defaults: { _controller: AppShowCaseBundle:Front:learning }
+
+
+

@@ -1,0 +1,8 @@
+app_show_case:
+    resource: "@AppShowCaseBundle/Resources/config/routing.yml"
+    prefix:   /
+    #prefix:   /{_locale}
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

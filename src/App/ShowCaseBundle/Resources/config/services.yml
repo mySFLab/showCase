@@ -1,0 +1,13 @@
+services:
+#    app_show_case.example:
+#        class: App\ShowCaseBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    App\ShowCaseBundle\Manager\CacheManager:
+        class: App\ShowCaseBundle\Manager\CacheManager
+
+    App\ShowCaseBundle\Manager\MailerManager:
+        class: App\ShowCaseBundle\Manager\MailerManager
+        arguments:
+            - '@mailer'
+

@@ -1,0 +1,52 @@
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <div class="form-group">
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endblock form_widget_simple %}
+
+{%- block choice_widget -%}
+<div class="form-group">
+    {% if expanded %}
+        {{- block('choice_widget_expanded') -}}
+    {% else %}
+        {{- block('choice_widget_collapsed') -}}
+    {% endif %}
+</div>
+
+{%- endblock choice_widget -%}
+
+{%- block textarea_widget -%}
+    <div class="form-group">
+        <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    </div>
+{%- endblock textarea_widget -%}
+
+{#<form role="form">#}
+    {#<div class="form-group">#}
+        {#<label for="name">Name</label>#}
+        {#<input type="text" placeholder="" id="name" class="form-control">#}
+    {#</div>#}
+    {#<div class="form-group">#}
+        {#<label for="email">Email</label>#}
+        {#<input type="text" placeholder="" id="email" class="form-control">#}
+    {#</div>#}
+    {#<div class="form-group">#}
+        {#<label for="phone">Phone</label>#}
+        {#<input type="text" id="phone" class="form-control">#}
+    {#</div>#}
+    {#<div class="form-group">#}
+        {#<label for="type">Type d'envoi</label>#}
+        {#<select name="type" id="type"class="form-control">#}
+            {#<option value="sms">SMS</option>#}
+            {#<option value="email">Email</option>#}
+            {#<option value="email">Messagerie du site</option>#}
+            {#<option value="email">Tous</option>#}
+        {#</select>#}
+    {#</div>#}
+    {#<div class="form-group">#}
+        {#<label for="phone">Message</label>#}
+        {#<textarea placeholder="" rows="5" class="form-control"></textarea>#}
+    {#</div>#}
+    {#<button class="btn btn-danger" type="submit">Envoyer</button>#}
+{#</form>#}

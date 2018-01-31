@@ -1,0 +1,56 @@
+homepage:
+    welcome:
+        title: Bienvenue
+    area_one:
+        title: FAITES CONFIANCE À L'EXPERIENCE
+        content: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener. natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener. natus error sit voluptatem accusantiu.
+    main_title: Faites confiance à l'experience
+    main_details: Développeur Freelance et formateur
+    freelacing_case_item:
+        title: Freelancing
+        detail: les details en francais
+    formations_case_item:
+        title: Formations
+        detail: les details en francais
+    head_hunters_case_item:
+            title: Porteur de projets
+            detail: les details en francais
+
+menu:
+    home: Accueil
+    about: Présentation
+    services: Freelance
+    features: Projets
+    learning: Formations
+    contact: Contacts
+    personnal_projects: Personnels
+    professional_projects: Professionels
+languages:
+    us: USA
+    spain: Espagnol
+    deucth: Allemand
+    russian: Russe
+    french: Francais
+breadcrumb:
+    home: Accueil
+    contact: Contact
+bearch:
+    search_field_menu_label: Rechercher
+button:
+    valid: Valider
+    cancel: Annuler
+footer:
+    contact_info:
+        title: Me contacter
+        mobile: Mobile
+        email: Email
+    last_tweet:
+        title: Dernier tweet
+        content: Pas de tweet pour le moment
+    stay_connected:
+        title: Suivez moi aussi via
+
+
+
+
+

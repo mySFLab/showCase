@@ -1,0 +1,92 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+<body>
+    <!--header start-->
+    {{ include('@AppShowCase/front/header.html.twig') }}
+    <!--header end-->
+    <!--property start-->
+    <div class="property gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 text-center">
+                    <img class="img-custom" src="{{ asset('img/wel3.png') }}" alt="image-accueil">
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <h1>{{ 'homepage.area_one.title'| trans }}</h1>
+                    <p>{{ 'homepage.area_one.content'| trans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center feature-head">
+        <h1>{{ 'homepage.main_title' | trans }}</h1>
+        <p>{{ 'homepage.main_details' | trans }}</p>
+    </div>
+    <!--property end-->
+    <!--container start-->
+    <div class="container">
+        <div class="row">
+            <!--feature start-->
+            <div class="col-lg-4 col-sm-4">
+                <section>
+                    <div class="f-box">
+                        <i class=" fa fa-desktop"></i>
+                        <h2>{{ 'homepage.freelacing_case_item.title' | trans }}</h2>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <section>
+                    <div class="f-box">
+                        <i class=" fa fa-code"></i>
+                        <h2>{{ 'homepage.formations_case_item.title' | trans }}</h2>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <section>
+                    <div class="f-box">
+                        <i class="fa fa-gears"></i>
+                        <h2>{{ 'homepage.head_hunters_case_item.title' | trans }}</h2>
+                    </div>
+                </section>
+            </div>
+            <!--feature end-->
+        </div>
+    </div>
+    <!--footer start-->
+    {% include "@AppShowCase/front/footer.html.twig" %}
+<!--footer end-->
+    {% block javascripts %}
+        {{ parent() }}
+        <!-- js placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+        <script src="{{ asset('js/botstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/hover-dropdown.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/bxslider/jquery.bxslider.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
+        <!--common script for all pages-->
+        <script src="{{ asset('js/common-scripts.js') }}"></script>
+        <script>
+            //google map
+            function initialize() {
+                var myLatlng = new google.maps.LatLng(48.866667, 2.333333);
+                var mapOptions = {
+                    zoom: 13,
+                    scrollwheel: true,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: 'Hello World!'
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    {% endblock javascripts %}
+</body>
+{% endblock body %}

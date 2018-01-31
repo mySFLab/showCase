@@ -1,0 +1,11 @@
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: showcase.dev
+    database_user: bdd_username
+    database_password: bdd_password
+    mailer_transport: gmail
+    mailer_host: 127.0.0.1
+    mailer_user: laurent.brau@gmail.com
+    mailer_password: my_password
+    secret: 20598609e77c598799d24853f1ed229b04073939

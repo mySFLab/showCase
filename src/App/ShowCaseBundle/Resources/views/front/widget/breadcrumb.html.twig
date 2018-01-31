@@ -1,0 +1,17 @@
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="col-lg-8 col-sm-8">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="{{ path('app_show_case_homepage') }}">{{ 'breadcrumb.home' | trans }}</a></li>
+                    <li><a href="#" class="active">{{ item }}</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs end-->

@@ -1,0 +1,29 @@
+<div class="navbar-collapse collapse ">
+    <ul class="nav navbar-nav">
+        <li class=""><a href="{{ path('app_show_case_homepage') }}">{{ 'menu.home' | trans }}</a></li>
+        <li><a href="{{ path('app_show_case_about') }}">{{ 'menu.about' | trans }}</a></li>
+        <li><a href="{{ path('app_show_case_freelance') }}">{{ 'menu.services' | trans }}</a></li>
+        <li class="dropdown ">
+            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{ 'menu.features' | trans }} <b class=" fa fa-angle-down"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('app_show_case_project') }}">{{ 'menu.personnal_projects' | trans }}</a></li>
+                <li><a href="{{ path('app_show_case_project') }}">{{ 'menu.professional_projects' | trans }}</a></li>
+            </ul>
+        </li>
+        <li><a href="{{ path('app_show_case_learning') }}">{{ 'menu.learning' | trans }}</a></li>
+        <li ><a href="{{ path('app_show_case_contact') }}">{{ 'menu.contact' | trans }}</a></li>
+        <li class="dropdown language active">
+            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img alt="" src="img/flags/fr.png">
+                <span class="username active">{{ 'languages.french' | trans }}</span>
+                <b class=" fa fa-angle-down"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#"><img alt="" src="{{ asset('img/flags/es.png') }}"> {{ 'languages.spain' | trans }}</a></li>
+                <li><a href="#"><img alt="" src="{{ asset('img/flags/de.png') }}"> {{ 'languages.deucth' | trans }}</a></li>
+                <li><a href="#"><img alt="" src="{{ asset('img/flags/ru.png') }}"> {{ 'languages.russian' | trans }}</a></li>
+                <li><a href="#"><img alt="" src="{{ asset('img/flags/us.png') }}"> {{ 'languages.us' | trans }}</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

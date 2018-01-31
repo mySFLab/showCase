@@ -1,0 +1,9 @@
+default:
+    suites:
+        my_suite:
+            type: symfony_bundle
+            bundle: App\ShowCaseBundle
+    extensions:
+        Behat\Symfony2Extension: ~
+
+

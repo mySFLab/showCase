@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    <body>
+    {{ include('@AppShowCase/front/header.html.twig') }}
+    {{ include('@AppShowCase/front/widget/breadcrumb.html.twig', {title: 'En cours de réalisation', item: 'en travaux'}) }}
+    <div class="container text-center">
+        <div class="row"><img class="text-center" src="{{ asset('img/workinprogress_white.png') }}" alt=""></div>
+        {#<div class="row in-progress"><img class="text-center" src="{{ asset('img/workinprogress_white2.png') }}" alt=""></div>#}
+    </div>
+    {% include "@AppShowCase/front/footer.html.twig" %}
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/hover-dropdown.js"></script>
+    <script type="text/javascript" src="assets/bxslider/jquery.bxslider.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
+    <script src="js/common-scripts.js"></script>
+    </body>
+{% endblock body %}
