@@ -210,8 +210,8 @@ p::selection {
     text-align: center;
     border-radius: 10px;
     color: white;
-    display: inline-block;
-    /*display: inline-flex;*/
+    /*display: inline-block;*/
+    display: inline-flex;
     margin: 10px;
 }
 
