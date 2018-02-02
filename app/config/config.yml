@@ -102,15 +102,18 @@ fos_rest:
     view:
         formats:
             xml: true
-            json: true
+            json: true # autorise le format json
         templating_formats:
             html: true
         force_redirects:
             html: true
         failed_validation: HTTP_BAD_REQUEST
         default_engine: twig
-        view_response_listener: true
+        view_response_listener: true # Permet de de soustraire de la methode handleView(), met juste View en annotations.
     format_listener:
         rules:
-            - { path: '^/', priorities: ['json'], fallback_format: 'json'}
+            - { path: '^/', priorities: ['json', 'html'], fallback_format: 'json'}
+    body_listener:
+        enabled: true # Permet a FosRest de convertir automatiquement les flux json entrant en array.
+                      # si false, nous serions obligé de faire un json_decode($request->getContent(), true); pour avoir un array.
 
