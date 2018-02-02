@@ -3,3 +3,8 @@ app_show_case:
     prefix:   /
     #prefix:   /{_locale}
 
+show_case_api:
+    type:     rest
+    prefix:   /api
+    resource: "@AppShowCaseBundle/Controller/ApiController.php"
+

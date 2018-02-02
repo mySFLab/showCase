@@ -73,6 +73,7 @@ class FrontController extends Controller
         // parameters to template
         $reponse = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
         $reponse->setExpires(new \DateTime('+1 hour'));
+        $reponse->setLastModified(new \DateTime('-1 hour'));
         $reponse->setPublic(true);
 
         return $reponse;
