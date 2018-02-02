@@ -17,5 +17,12 @@ app_show_case_learning:
   path:     /learning
   defaults: { _controller: AppShowCaseBundle:Front:learning }
 
+app_show_case_admin_homepage:
+  path:     /admin/home
+  defaults: { _controller: AppShowCaseBundle:Admin:home }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 
 

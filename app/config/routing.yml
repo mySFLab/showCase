@@ -3,6 +3,3 @@ app_show_case:
     prefix:   /
     #prefix:   /{_locale}
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation

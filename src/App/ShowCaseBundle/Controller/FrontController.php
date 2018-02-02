@@ -71,7 +71,11 @@ class FrontController extends Controller
         );
 
         // parameters to template
-        return $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
+        $reponse = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
+        $reponse->setExpires(new \DateTime('+1 hour'));
+        $reponse->setPublic(true);
+
+        return $reponse;
     }
 
     public function learningAction(Request $request)

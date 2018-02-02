@@ -22,16 +22,7 @@
     {{ include('@AppShowCase/front/header.html.twig') }}
     {{ include('@AppShowCase/front/widget/breadcrumb.html.twig', {'title': 'Projets', 'item': 'Liste des projets'}) }}
     <div class="container projects-container">
-        <div class="project-packet">
-            <div id="" class="col-4">
-                <div class="" data-zlname="">
-                    <div class="">
-                        <h2>Meteo Guzzle lab</h2>
-                    </div>
-                    <img class="project_pic" src="http://localhost:8000/img/sun.jpg" alt="">
-                </div>
-            </div>
-        </div>
+
         {% for project in projects %}
             <div class="project-packet">
                 <div id="" class="col-4">
@@ -48,6 +39,8 @@
         <div class="navigation">
             {{ knp_pagination_render(projects) }}
         </div>
+        <a href="http://www.google.com" class="mylink">Voici le lien</a>
+
         <!--portfolio end-->
     </div>
     <!--container end-->
@@ -64,6 +57,16 @@
         console.log(image);
         // project_items.map((item) => console.log(item));
         // project_items.map((item) => item.append(image));
+        document.querySelector('.project-packet').addEventListener('click', function(event){
+            window.document.querySelector(".mylink").click();
+        });
+
+        let projects = Array.from(document.querySelectorAll('.project-packet'));
+        console.log(projects);
+
+        projects.map((project) => project.addEventListener('click', function(event){
+            console.log(document.querySelector('.project-packet'));
+        }));
     </script>
     </body>
 {% endblock %}
