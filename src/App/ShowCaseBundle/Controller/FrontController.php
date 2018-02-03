@@ -83,4 +83,9 @@ class FrontController extends Controller
     {
         return $this->render('@AppShowCase/front/learning.html.twig');
     }
+
+    public function getProjectsClientViewAction()
+    {
+        return $this->render("@AppShowCase/client_side/projects_list.html.twig");
+    }
 }

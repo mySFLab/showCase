@@ -21,6 +21,10 @@ app_show_case_admin_homepage:
   path:     /admin/home
   defaults: { _controller: AppShowCaseBundle:Admin:home }
 
+projects_lists:
+  path:     /projects/list
+  defaults: { _controller: AppShowCaseBundle:Front:getProjectsClientView }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
