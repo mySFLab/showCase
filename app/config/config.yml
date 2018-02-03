@@ -112,7 +112,8 @@ fos_rest:
         view_response_listener: true # Permet de de soustraire de la methode handleView(), met juste View en annotations.
     format_listener:
         rules:
-            - { path: '^/', priorities: ['json', 'html'], fallback_format: 'json'}
+            - { path: '^/api', priorities: ['json'], fallback_format: 'json'}
+            - { path: '^/', priorities: ['html'], fallback_format: 'html'}
     body_listener:
         enabled: true # Permet a FosRest de convertir automatiquement les flux json entrant en array.
                       # si false, nous serions obligé de faire un json_decode($request->getContent(), true); pour avoir un array.

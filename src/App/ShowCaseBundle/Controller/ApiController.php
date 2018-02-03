@@ -16,6 +16,7 @@ use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,8 +24,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApiController extends Controller
 {
-
-
     /**
      * @Rest\View()
      * @Rest\Get("/projects/", name="projects_list", requirements={"_format"=".*"})
@@ -54,13 +53,9 @@ class ApiController extends Controller
     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Post("/projects/", name="new_project")
-     *
-     * @param Request $request
-     * @return Project|\Symfony\Component\Form\FormInterface
      */
     public function addProjectAction(Request $request)
     {
-
         $project = new Project();
 
         $form = $this->createForm(ProjectType::class, $project);
@@ -75,6 +70,5 @@ class ApiController extends Controller
         } else {
             return $form;
         }
-
     }
 }
