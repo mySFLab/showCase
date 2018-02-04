@@ -30,7 +30,7 @@ class ApiController extends Controller
      */
     public function getProjectsAction()
     {
-        $projets = $this->getDoctrine()->getRepository(Project::class)->findAll();
+        $projets = $this->getDoctrine()->getRepository(Project::class)->findBy(['enabled' => true]);
 
         return $projets;
     }

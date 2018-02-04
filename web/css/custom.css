@@ -2,6 +2,11 @@
     background: rgba(13, 94, 255, 0);
     color: #fff;
     padding: 45px 0;
+    margin-bottom: 0px;
+}
+
+.contact-map {
+    margin-top: 0px;
     margin-bottom: 40px;
 }
 .header-frontend .nav li a:hover, .header-frontend .nav li a:focus, .header-frontend .nav li.active a, .header-frontend .nav li.active a:hover, .header-frontend .nav li a.dropdown-toggle:hover, .header-frontend .nav li a.dropdown-toggle:focus, .header-frontend .nav li.active ul.dropdown-menu li a:hover, .header-frontend .nav li.active ul.dropdown-menu li.active a {
@@ -204,13 +209,22 @@ p::selection {
 }
 
 .project-packet {
-    background-color: #269b34;
+    /*background-color: #269b34;
     width: 25%;
     height: 300px;
     text-align: center;
     border-radius: 10px;
     color: white;
-    /*display: inline-block;*/
+    display: inline-flex;
+    margin: 10px;*/
+
+    background-color: #175d20a3;
+    width: 25%;
+    height: 300px;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    /* display: inline-block; */
     display: inline-flex;
     margin: 10px;
 }
@@ -221,4 +235,17 @@ p::selection {
 
 .project_pic {
     padding: 0px 48px;
+}
+
+.nav navbar-nav ul li {
+    position: relative;
+}
+.wip-panel {
+    color: red;
+    transform: rotate(-45deg);
+    font-weight: bold;
+    opacity: 0.9;
+    text-align: center;
+    position: absolute;
+    top: 30px;
 }
