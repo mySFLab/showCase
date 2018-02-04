@@ -6,7 +6,7 @@
  * Time: 16:56
  */
 
-namespace App\ShowCaseBundle\Controller;
+namespace App\ShowCaseBundle\Controller\Api;
 
 use App\ShowCaseBundle\Entity\Project;
 use App\ShowCaseBundle\Form\ProjectType;

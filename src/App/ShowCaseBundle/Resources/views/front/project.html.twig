@@ -22,11 +22,13 @@
         {% for project in projects %}
             <div class="project-packet">
                 <div id="" class="col-4">
-                    <div class="" data-zlname="">
+                    <div class="project-content" data-zlname="">
                         <div class="">
                             <h2>{{ project.projectName }} </h2>
                         </div>
                         <img class="project_pic" src="{{ project.picPath }}" alt="">
+                        <div class="text-content">
+                           {{ project.contentText }}</div>
                     </div>
                 </div>
             </div>

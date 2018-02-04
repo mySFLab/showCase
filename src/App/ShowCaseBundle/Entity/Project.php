@@ -31,6 +31,13 @@ class Project
     /**
      * @var string
      *
+     * @ORM\Column(name="content_text", type="text")
+     */
+    private $contentText;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="picPath", type="string", length=255)
      */
     private $picPath;
@@ -41,7 +48,6 @@ class Project
      * @ORM\Column(name="enabled", type="boolean")
      */
     private $enabled;
-
 
     /**
      * Get id
@@ -75,6 +81,30 @@ class Project
     public function getProjectName()
     {
         return $this->projectName;
+    }
+
+    /**
+     * Set projectName
+     *
+     * @param string $contentText
+     *
+     * @return Project
+     */
+    public function setContentText($contentText)
+    {
+        $this->contentText = $contentText;
+
+        return $this;
+    }
+
+    /**
+     * Get contentText
+     *
+     * @return string
+     */
+    public function getContentText()
+    {
+        return $this->contentText;
     }
 
     /**

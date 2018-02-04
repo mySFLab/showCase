@@ -1,29 +1,34 @@
 app_show_case_homepage:
     path:     /
-    defaults: { _controller: AppShowCaseBundle:Front:homePage}
+    defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:homePage}
+
 app_show_case_contact:
     path:     /contact
-    defaults: { _controller: AppShowCaseBundle:Front:contact }
+    defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:contact }
+
 app_show_case_about:
     path:     /about
-    defaults: { _controller: AppShowCaseBundle:Front:about }
+    defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:about }
+
 app_show_case_freelance:
   path:     /freelance
-  defaults: { _controller: AppShowCaseBundle:Front:freelance }
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:freelance }
+
 app_show_case_project:
   path:     /project
-  defaults: { _controller: AppShowCaseBundle:Front:project }
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:project }
+
 app_show_case_learning:
   path:     /learning
-  defaults: { _controller: AppShowCaseBundle:Front:learning }
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:learning }
 
 app_show_case_admin_homepage:
   path:     /admin/home
-  defaults: { _controller: AppShowCaseBundle:Admin:home }
+  defaults: { _controller: AppShowCaseBundle:BackOffice\Admin:home }
 
 projects_lists:
   path:     /projects/list
-  defaults: { _controller: AppShowCaseBundle:Front:getProjectsClientView }
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:getProjectsClientView }
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
