@@ -16,6 +16,7 @@ class ProjectType extends AbstractType
         $builder
             ->add('projectName')
             ->add('picPath')
+            ->add('contentText')
             ->add('enabled')
         ;
     }/**

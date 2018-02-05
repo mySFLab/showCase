@@ -71,12 +71,12 @@ class FrontController extends Controller
         );
 
         // parameters to template
-        $reponse = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
-        $reponse->setExpires(new \DateTime('+1 hour'));
-        $reponse->setLastModified(new \DateTime('-1 hour'));
-        $reponse->setPublic(true);
+        $response = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
 
-        return $reponse;
+        $this->get(CacheManager::class)
+            ->addExpirationCacheByDate($response, new \DateTime("+1 hour"), new \DateTime("-1 hour"));
+
+        return $response;
     }
 
     public function learningAction(Request $request)
