@@ -9,6 +9,7 @@
 namespace App\ShowCaseBundle\Controller\Api;
 
 use App\ShowCaseBundle\Entity\User;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use App\ShowCaseBundle\Entity\Project;
@@ -23,12 +24,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Nelmio\ApiDocBundle\Annotation as Doc;
+use Swagger\Annotations as SWG;
 
 class ApiProjectController extends Controller
 {
     /**
      * @Rest\View()
      * @Rest\Get("/admin/project/list", name="projects_list_admin", requirements={"_format"=".*"})
+     * @SWG\Response(
+     *     response=200,
+     *     description="Return projets list",
+     *     @SWG\Schema(
+     *         type="array",
+     *         @Model(type=Project::class)
+     *     )
+     * )
      */
     public function projectListAction()
     {
