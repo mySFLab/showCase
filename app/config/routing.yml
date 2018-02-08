@@ -6,5 +6,5 @@ app_show_case:
 show_case_api:
     type:     rest
     prefix:   /api
-    resource: "@AppShowCaseBundle/Controller/ApiController.php"
+    resource: "@AppShowCaseBundle/Controller/Api"
 

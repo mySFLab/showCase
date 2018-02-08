@@ -6,14 +6,14 @@
  * Time: 16:56
  */
 
-namespace App\ShowCaseBundle\Controller;
+namespace App\ShowCaseBundle\Controller\BackOffice;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class BackController extends Controller
+class AdminController extends Controller
 {
     public function homeAction()
     {
-        // todo faire la gestion du back.
+        return $this->render('@AppShowCase/admin/homepage.html.twig', ['user' => $this->getUser()]);
     }
 }

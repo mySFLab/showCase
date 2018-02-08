@@ -6,7 +6,7 @@
  * Time: 16:56
  */
 
-namespace App\ShowCaseBundle\Controller;
+namespace App\ShowCaseBundle\Controller\Api;
 
 use App\ShowCaseBundle\Entity\Project;
 use App\ShowCaseBundle\Form\ProjectType;
@@ -30,7 +30,7 @@ class ApiController extends Controller
      */
     public function getProjectsAction()
     {
-        $projets = $this->getDoctrine()->getRepository(Project::class)->findAll();
+        $projets = $this->getDoctrine()->getRepository(Project::class)->findBy(['enabled' => true]);
 
         return $projets;
     }

@@ -6,7 +6,7 @@
  * Time: 16:56
  */
 
-namespace App\ShowCaseBundle\Controller;
+namespace App\ShowCaseBundle\Controller\FrontOffice;
 
 use App\ShowCaseBundle\Entity\Contact;
 use App\ShowCaseBundle\Entity\Project;
@@ -67,16 +67,16 @@ class FrontController extends Controller
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            6/*limit per page*/
+            $this->getParameter('knp_paginator.page_range')/*limit per page*/
         );
 
         // parameters to template
-        $reponse = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
-        $reponse->setExpires(new \DateTime('+1 hour'));
-        $reponse->setLastModified(new \DateTime('-1 hour'));
-        $reponse->setPublic(true);
+        $response = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
 
-        return $reponse;
+        $this->get(CacheManager::class)
+            ->addExpirationCacheByDate($response, new \DateTime("+1 hour"), new \DateTime("-1 hour"));
+
+        return $response;
     }
 
     public function learningAction(Request $request)

@@ -6,9 +6,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CacheManager
 {
-    public function addExpirationCacheByDate(Response $response, \DateTime $expirationDate, \DateTime $lastModifiedDate)
+    public function addExpirationCacheByDate(Response $response, \DateTime $expirationDate, \DateTime $lastModifiedDate, $public = true)
     {
-        $response->setPublic();
+        $response->setPublic($public);
         $response->setExpires($expirationDate);
         $response->setLastModified($lastModifiedDate);
 
