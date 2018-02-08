@@ -1,10 +1,15 @@
 app_show_case_homepage:
     path:     /
     defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:homePage}
+    options:
+        expose: true
+
 
 app_show_case_contact:
     path:     /contact
     defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:contact }
+    options:
+        expose: true
 
 app_show_case_about:
     path:     /about
