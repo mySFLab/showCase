@@ -119,6 +119,14 @@ fos_rest:
         enabled: true # Permet a FosRest de convertir automatiquement les flux json entrant en array.
                       # si false, nous serions obligé de faire un json_decode($request->getContent(), true); pour avoir un array.
 
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Show Case Api documentation
+            description: This is my api show case
+            version: 1.0.0
+
+
 nelmio_cors:
     defaults:
         allow_credentials: false
