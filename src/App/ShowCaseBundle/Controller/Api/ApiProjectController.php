@@ -34,7 +34,7 @@ class ApiProjectController extends Controller
      * @Rest\Get("/admin/project/list", name="projects_list_admin", requirements={"_format"=".*"})
      * @SWG\Response(
      *     response=200,
-     *     description="Return projets list",
+     *     description="Return projects list",
      *     @SWG\Schema(
      *         type="array",
      *         @Model(type=Project::class)
