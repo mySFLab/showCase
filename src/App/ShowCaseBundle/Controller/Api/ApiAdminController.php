@@ -22,7 +22,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApiController extends Controller
+class ApiAdminController extends Controller
 {
     /**
      * @Rest\View()

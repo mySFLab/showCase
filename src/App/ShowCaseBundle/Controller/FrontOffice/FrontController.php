@@ -48,7 +48,7 @@ class FrontController extends Controller
     {
         $response = $this->render('@AppShowCase/front/about.html.twig');
         $this->get(CacheManager::class)
-            ->addExpirationCacheByDate($response, new \DateTime("+1 minute"), new \DateTime("-2 minutes"));
+            ->addExpirationCacheByDate($response, new \DateTime("+10 seconds"), new \DateTime("-2 minutes"));
 
         return $response;
     }

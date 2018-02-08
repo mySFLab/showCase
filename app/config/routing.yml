@@ -8,3 +8,6 @@ show_case_api:
     prefix:   /api
     resource: "@AppShowCaseBundle/Controller/Api"
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
