@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProjectType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,10 +14,10 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('projectName')
-            ->add('picPath')
-            ->add('contentText')
+            ->add('email')
+            ->add('username')
             ->add('enabled')
+            ->add('roles')
         ;
     }
 
@@ -27,8 +27,8 @@ class ProjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\ShowCaseBundle\Entity\Project',
-            'csrf_protection' => false
+            'data_class' => 'App\ShowCaseBundle\Entity\User',
+            'csrf_protection' => false,
         ));
     }
 
@@ -37,6 +37,8 @@ class ProjectType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'app_showcasebundle_project';
+        return 'app_showcasebundle_user';
     }
+
+
 }

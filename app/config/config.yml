@@ -130,7 +130,6 @@ nelmio_api_doc:
             - ^/api
             - ^/api(?!/admin)
 
-
 nelmio_cors:
     defaults:
         allow_credentials: false
