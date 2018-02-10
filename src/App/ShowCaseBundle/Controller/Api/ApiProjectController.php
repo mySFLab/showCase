@@ -58,4 +58,45 @@ class ApiProjectController extends Controller
 
         return $users;
     }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Post("/projects/", name="_add_project")
+     */
+    public function addProjectAction(Request $request)
+    {
+        $project = new Project();
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->submit($request->request->all());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+
+            return $project;
+
+        } else {
+            return $form;
+        }
+    }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/projects/{id}", name="remove_project")
+     */
+    public function deleteProjectAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository(Project::class)->findOneBy(['id' => $id]);
+
+        try {
+            $em->remove($project);
+            $em->flush();
+        } catch(\Exception $e) {
+            return new JsonResponse([
+                'message' => 'Project not found in database',
+                'exception_message' => $e->getMessage()
+            ]);
+        }
+    }
 }
