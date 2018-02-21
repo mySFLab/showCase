@@ -35,6 +35,10 @@ projects_lists:
   path:     /projects/list
   defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:getProjectsClientView }
 
+app_show_login:
+  path:     /login
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:login }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

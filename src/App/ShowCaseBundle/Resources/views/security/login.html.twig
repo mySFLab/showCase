@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+{#{% form_theme form 'AppShowCaseBundle:templates/form:common.html.twig' %}#}
+{#{% form_theme form 'App\ShowCaseBundle/' %}#}
+{% block body %}
+  {% block theme_css %}
+      {{ parent() }}
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/theme.css" rel="stylesheet">
+      <link href="css/bootstrap-reset.css" rel="stylesheet">
+      <!--external css-->
+      <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/flexslider.css"/>
+      <link href="assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+
+      <!-- Custom styles for this template -->
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/style-responsive.css" rel="stylesheet" />
+  {% endblock theme_css %}
+  {% block custom_css %}
+      {{ parent() }}
+  {% endblock custom_css %}
+
+<body>
+    {{ include('@AppShowCase/front/header.html.twig') }}
+    {{ include('@AppShowCase/front/widget/breadcrumb.html.twig', {'title': 'Contacts', 'item': 'Prise de contact'}) }}
+    <div class="container">
+        {% block fos_user_content %}
+            {{ include('@FOSUser/Security/login_content.html.twig') }}
+        {% endblock fos_user_content %}
+    </div>
+</body>
+{% endblock body %}
