@@ -9,6 +9,7 @@
 namespace App\ShowCaseBundle\Controller\Api;
 
 use App\ShowCaseBundle\Entity\User;
+use App\ShowCaseBundle\Form\UserType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -31,12 +32,12 @@ class ApiProjectController extends Controller
 {
     /**
      * @Rest\View()
-     * @Rest\Get("/admin/project/list", name="projects_list_admin", requirements={"_format"=".*"})
+     * @Rest\Get("/admin/projects/", name="projects_list_admin", requirements={"_format"=".*"})
      * @SWG\Response(
      *     response=200,
      *     description="Return projects list",
      *     @SWG\Schema(
-     *         type="array",
+     *         type="object",
      *         @Model(type=Project::class)
      *     )
      * )
@@ -81,10 +82,49 @@ class ApiProjectController extends Controller
     }
 
     /**
-     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
-     * @Rest\Delete("/projects/{id}", name="remove_project")
+     * @Rest\View(statusCode=Response::HTTP_ACCEPTED)
+     * @Rest\Put("/projects/{id}", requirements={"id"=".*"})
+     *
      */
-    public function deleteProjectAction($id)
+    public function editProjectAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository(Project::class)->findOneBy(['id' => $id]);
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->submit($request, false);
+        if ($form->isValid()) {
+            $em->merge($project);
+            $em->flush();
+        }
+
+        return $project;
+    }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Patch("/projects/{id}", name="_modify_project")
+     */
+    public function modifyProjectAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $projet = $em->getRepository(Project::class)->findOneBy(['id' => $id]);
+        $form = $this->createForm(UserType::class, $projet);
+        $form->submit($request->request->all(), false);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // todo faire un cas de gestion pour les roles (doublons, roles inexistants et remove d'un role, ajout de plus de deux roles a une user)
+            $em->flush();
+
+            return $projet;
+        }
+
+        return $form;
+    }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/projects/{id}", name="remove_project", requirements={"id"=".*"})
+     */
+    public function deleteProjectAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository(Project::class)->findOneBy(['id' => $id]);
