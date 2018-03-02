@@ -97,6 +97,27 @@ class ApiAdminController extends Controller
 
 
     /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Patch("/users/{id}", name="_modify_user")
+     */
+    public function modifyUserAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy(['id' => $id]);
+        $form = $this->createForm(UserType::class, $user);
+        $form->submit($request->request->all(),false );
+        if ($form->isSubmitted() && $form->isValid()) {
+            // todo faire un cas de gestion pour les roles (doublons, roles inexistants et remove d'un role, ajout de plus de deux roles a une user)
+            $em->flush();
+
+            return $user;
+        }
+
+        return $form;
+    }
+
+
+    /**
      * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
      * @Rest\Delete("/users/{id}", name="remove_user")
      */
