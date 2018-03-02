@@ -19,26 +19,59 @@
     {{ include('@AppShowCase/front/header.html.twig') }}
     {{ include('@AppShowCase/front/widget/breadcrumb.html.twig', {'title': 'Projets', 'item': 'Liste des projets'}) }}
     <div class="container projects-container">
-        {% for project in projects %}
-            <div class="project-packet">
-                <div id="" class="col-4">
-                    <div class="project-content" data-zlname="">
-                        <div class="">
-                            <h2>{{ project.projectName }} </h2>
+        {% if 0 < projects | length %}
+            {% for project in projects %}
+                <div class="project-packet">
+                    <div id="" class="col-4">
+                        <div class="project-content" data-zlname="">
+                            <div class="">
+                                <h2>{{ project.projectName }} </h2>
+                            </div>
+                            <img class="project_pic" src="{{ project.picPath }}" alt="">
+                            <div class="text-content">
+                               {{ project.contentText }}</div>
                         </div>
-                        <img class="project_pic" src="{{ project.picPath }}" alt="">
-                        <div class="text-content">
-                           {{ project.contentText }}</div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+            {% else %}
+            <div class="no-project"><img src="{{ asset('img/no-data.jpeg') }}" alt=""></div>
+        {% endif %}
         <div class="navigation">
             {{ knp_pagination_render(projects) }}
         </div>
-        <a href="http://www.google.com" class="mylink">Voici le lien</a>
     </div>
     {% include "@AppShowCase/front/footer.html.twig" %}
+    {% block javascripts %}
+        {{ parent() }}
+        <!-- js placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/botstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/hover-dropdown.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/bxslider/jquery.bxslider.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
+        <!--common script for all pages-->
+        <script src="{{ asset('js/common-scripts.js') }}"></script>
+        <script>
+            //google map
+            function initialize() {
+                var myLatlng = new google.maps.LatLng(48.866667, 2.333333);
+                var mapOptions = {
+                    zoom: 13,
+                    scrollwheel: true,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: 'Hello World!'
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    {% endblock javascripts %}
     <script>
         let project_items = document.querySelectorAll('.project-packet');
         // console.log(project_items);

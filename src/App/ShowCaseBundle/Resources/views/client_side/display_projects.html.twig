@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>email</th>
+            <th>actif</th>
+            <th>action</th>
+        </tr>
+        <tr ng-repeat="project in allProjects">
+            {% verbatim %}
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.project_name }}</td>
+                    <td>{{ project.content_text }}</td>
+                    <td>{{ project.enabled }}</td>
+                    <td><a href="#" class="btn btn-success">edit</a></td>
+                    {% endverbatim %}
+        </tr>
+    </table>
+</div>

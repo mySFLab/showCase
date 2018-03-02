@@ -4,13 +4,7 @@
       <p ng-repeat="project in allProjects">{% verbatim %}{{ project.projectName }}{% endverbatim %}</p>
       <script src="{{ asset('js/angular.js') }}"></script>
       <script>
-          angular.module('project_api', [])
-              .controller('getProjects', function($scope, $http) {
-                  $http.get('http://localhost:8000/api/projects')
-                   .then(function(reponse){
-                      $scope.allProjects = reponse.data;
-                   })
-           });
+
       </script>
    </body>
    {% endblock body %}

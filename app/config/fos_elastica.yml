@@ -1,0 +1,36 @@
+fos_elastica:
+    serializer:
+        callback_class: FOS\ElasticaBundle\Serializer\Callback
+        serializer: serializer
+    clients:
+        default: { host: %elastic_host%, port: %elastic_port% }
+    indexes:
+        project:
+            client: default
+            types:
+                Project:
+                    properties:
+                        id:
+                            type: integer
+                        projectName: ~
+                        enabled :
+                            type : boolean
+                        contentText : ~
+                    persistence:
+                        driver: orm
+                        model: App\ShowCaseBundle\Entity\Project
+                        repository: App\ShowCaseBundle\Repository\ES\ProjectRepository
+                        finder: ~
+                        provider: ~
+                        listener: ~
+        user:
+            client: default
+            types:
+                User:
+                    properties:
+                        id: ~
+                    persistence:
+                        driver: orm
+                        model:  App\ShowCaseBundle\Entity\User
+                        provider: ~
+

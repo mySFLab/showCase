@@ -252,14 +252,43 @@ p::selection {
     width: 100px;
 }
 .about-picture {
-    width: 300px;
-    height: 263px;
-    margin: auto;
+    /*width: 300px;*/
+    /*height: 263px;*/
+    /*margin: auto;*/
     border-radius: 5px;
-    margin: auto;
+    /*margin: auto;*/
 }
 
 .carousel {
     position: relative;
     text-align: center;
+}
+
+.no-project img{
+    width: 500px;
+}
+
+.last-updated {
+    color: #cfd0d1;
+    font-size: smaller;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.ico-bg {
+    background: #175d1f;
+}
+
+.hp-frame {
+    background-color: green;
+    width: 200px;
+    height: 200px;
 }

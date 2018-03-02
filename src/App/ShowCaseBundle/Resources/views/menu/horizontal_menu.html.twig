@@ -7,7 +7,7 @@
             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{ 'menu.features' | trans }} <b class=" fa fa-angle-down"></b></a>
             <ul class="dropdown-menu">
                 <li><a href="{{ path('app_show_case_project') }}">{{ 'menu.personnal_projects' | trans }}</a></li>
-                <li><a href="{{ path('app_show_case_project') }}">{{ 'menu.professional_projects' | trans }}</a></li>
+                <li><a href="{{ path('app_show_case_project', {'pro': true }) }}">{{ 'menu.professional_projects' | trans }}</a></li>
             </ul>
         </li>
         <li><a href="{{ path('app_show_case_learning') }}">{{ 'menu.learning' | trans }}</a><div class="wip-panel">Work in progress</div></li>

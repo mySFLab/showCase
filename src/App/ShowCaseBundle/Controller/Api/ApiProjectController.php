@@ -32,7 +32,7 @@ class ApiProjectController extends Controller
 {
     /**
      * @Rest\View()
-     * @Rest\Get("/admin/projects/", name="projects_list_admin", requirements={"_format"=".*"})
+     * @Rest\Get("/admin/projects/", name="projects_list_admin")
      * @SWG\Response(
      *     response=200,
      *     description="Return projects list",
@@ -47,17 +47,6 @@ class ApiProjectController extends Controller
         $projets = $this->getDoctrine()->getRepository(Project::class)->findBy(['enabled' => true]);
 
         return $projets;
-    }
-
-    /**
-     * @Rest\View()
-     * @Rest\Get("/admin/user/list/", name="users_list_admin", requirements={"_format"=".*"})
-     */
-    public function userListAction()
-    {
-        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-
-        return $users;
     }
 
     /**
@@ -139,4 +128,7 @@ class ApiProjectController extends Controller
             ]);
         }
     }
+
+
+
 }

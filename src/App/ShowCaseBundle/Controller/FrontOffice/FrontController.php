@@ -10,6 +10,7 @@ namespace App\ShowCaseBundle\Controller\FrontOffice;
 
 use App\ShowCaseBundle\Entity\Contact;
 use App\ShowCaseBundle\Entity\Project;
+use App\ShowCaseBundle\Entity\User;
 use App\ShowCaseBundle\Form\ContactType;
 use App\ShowCaseBundle\Manager\CacheManager;
 use App\ShowCaseBundle\Manager\MailerManager;
@@ -47,9 +48,26 @@ class FrontController extends Controller
         return $response;
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function aboutAction(Request $request)
     {
-        $response = $this->render('@AppShowCase/front/about.html.twig');
+//        $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
+        // getResult from elastic search
+        $projects = $this->get('fos_elastica.finder.project.Project')->find('project*');
+            dump($projects, $h = $this->get('fos_elastica.finder.project.Project')->findHybrid('project'));
+        /** var HybridResult $res */
+        $res = $h[0];
+
+        $repositoryManager = $this->get('fos_elastica.manager');
+        $repository = $repositoryManager->getRepository(Project::class);
+        $users = $repository->findWithCustomQuery();
+
+        dump($users);die;
+
+        $response = $this->render('@AppShowCase/front/about.html.twig', ['projects' => $projects]);
         $this->get(CacheManager::class)
             ->addExpirationCacheByDate($response, new \DateTime("+10 seconds"), new \DateTime("-2 minutes"));
 
@@ -61,11 +79,10 @@ class FrontController extends Controller
         return $this->render('@AppShowCase/front/freelance.html.twig');
     }
 
-    public function projectAction(Request $request)
+    public function projectAction(Request $request, $pro)
     {
-        $query = $this->getDoctrine()->getManager()->getRepository(Project::class)->getProjectsQuery();
-        $projects = clone $query;
-        $numberProjects = count($projects->getResult());
+        $query = $this->getDoctrine()->getManager()->getRepository(Project::class)->getProjectsQuery($pro);
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -73,9 +90,12 @@ class FrontController extends Controller
             $this->getParameter('knp_paginator.page_range')/*limit per page*/
         );
 
+        $numberProjects = count($query->getResult());
+
         // parameters to template
         $response = $this->render('@AppShowCase/front/project.html.twig', array('projects' => $pagination, 'paginationNb'=> $numberProjects));
 
+        // Data caching ...
         $this->get(CacheManager::class)
             ->addExpirationCacheByDate($response, new \DateTime("+1 hour"), new \DateTime("-1 hour"));
 
@@ -84,7 +104,15 @@ class FrontController extends Controller
 
     public function learningAction(Request $request)
     {
-        return $this->render('@AppShowCase/front/learning.html.twig');
+
+        // parameters to template
+        $response = $this->render('@AppShowCase/front/learning.html.twig');
+
+        // Data caching ...
+        $this->get(CacheManager::class)
+            ->addExpirationCacheByDate($response, new \DateTime("+1 hour"), new \DateTime("-1 hour"));
+
+        return $response;
     }
 
     /**
@@ -142,6 +170,11 @@ class FrontController extends Controller
     }
 
     public function getProjectsClientViewAction()
+    {
+        return $this->render("@AppShowCase/client_side/projects_list.html.twig");
+    }
+
+    public function miniProjectListAction()
     {
         return $this->render("@AppShowCase/client_side/projects_list.html.twig");
     }

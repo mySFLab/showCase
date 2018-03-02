@@ -4,7 +4,6 @@ app_show_case_homepage:
     options:
         expose: true
 
-
 app_show_case_contact:
     path:     /contact
     defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:contact }
@@ -20,12 +19,12 @@ app_show_case_freelance:
   defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:freelance }
 
 app_show_case_project:
-  path:     /project
-  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:project }
+  path:     /project/{pro}
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:project, pro: false }
 
 app_show_case_learning:
   path:     /learning
-  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:learning }
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:learning}
 
 app_show_case_admin_homepage:
   path:     /admin/home
@@ -34,6 +33,10 @@ app_show_case_admin_homepage:
 projects_lists:
   path:     /projects/list
   defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:getProjectsClientView }
+
+mini_project:
+  path:     /mini_projects/list
+  defaults: { _controller: AppShowCaseBundle:FrontOffice\Front:miniProjectList }
 
 app_show_login:
   path:     /login

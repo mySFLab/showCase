@@ -10,10 +10,13 @@ namespace App\ShowCaseBundle\Repository;
  */
 class ProjectRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getProjectsQuery()
+    public function getProjectsQuery($pro)
     {
         $qb = $this->createQueryBuilder('p');
-
+        $qb
+            ->where('p.professionnalProject = :pro')
+            ->setParameter('pro', $pro)
+        ;
         return $qb->getQuery();
     }
 }

@@ -15,6 +15,13 @@ homepage:
     head_hunters_case_item:
             title: Porteur de projets
             detail: les details en francais
+aboutpage:
+    backend_developper:
+        title: Développeur Backend
+        content: Développeur Symfony 2|3
+    frontend_developper:
+        title: Développeur Frontend
+        content: Javascript ES6|7, AngularJS
 
 menu:
     home: Accueil

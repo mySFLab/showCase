@@ -110,7 +110,7 @@
           var myLatlng = new google.maps.LatLng(49.193852, 2.9593469999999797);
           var mapOptions = {
               zoom: 9,
-              scrollwheel: true,
+              scrollwheel: false,
               center: myLatlng,
               mapTypeId: google.maps.MapTypeId.ROADMAP
           }
@@ -118,12 +118,10 @@
           var marker = new google.maps.Marker({
               position: myLatlng,
               map: map,
-              title: 'Hello World!'
+              title: 'Ma position'
           });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
-
-
 
   </script>
 

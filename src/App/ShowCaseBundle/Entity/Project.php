@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Project
 {
+
     /**
      * @var int
      *
@@ -48,6 +49,13 @@ class Project
      * @ORM\Column(name="enabled", type="boolean")
      */
     private $enabled;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="professionnal_project", type="boolean")
+     */
+    private $professionnalProject;
 
     /**
      * Get id
@@ -154,5 +162,28 @@ class Project
     {
         return $this->enabled;
     }
-}
 
+    /**
+     * Set professionnalProject
+     *
+     * @param boolean $professionnalProject
+     *
+     * @return Project
+     */
+    public function setProfessionnalProject($professionnalProject)
+    {
+        $this->professionnalProject = $professionnalProject;
+
+        return $this;
+    }
+
+    /**
+     * Get professionnalProject
+     *
+     * @return boolean
+     */
+    public function getProfessionnalProject()
+    {
+        return $this->professionnalProject;
+    }
+}
