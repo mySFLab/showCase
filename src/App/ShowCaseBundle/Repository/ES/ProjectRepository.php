@@ -8,6 +8,6 @@ class ProjectRepository extends Repository
 {
     public function findWithCustomQuery()
     {
-        dump('es repo');die;
+        // todo requete elastica.
     }
 }

@@ -5,6 +5,16 @@
     </div>
 {% endblock form_widget_simple %}
 
+{% block form_row %}
+    {% spaceless %}
+        <div class="form_row">
+            {{ form_label(form) }}
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
 {%- block choice_widget -%}
 <div class="form-group">
     {% if expanded %}
@@ -21,6 +31,16 @@
         <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
     </div>
 {%- endblock textarea_widget -%}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul>
+            {%- for error in errors -%}
+                <li>{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}
 
 {#<form role="form">#}
     {#<div class="form-group">#}

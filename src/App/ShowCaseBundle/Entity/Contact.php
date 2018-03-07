@@ -3,7 +3,7 @@
 namespace App\ShowCaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Contact
  *
@@ -23,35 +23,37 @@ class Contact
 
     /**
      * @var string
-     *
+     * @Assert\Length(min=4)
+     * @Assert\NotBlank()
      * @ORM\Column(name="contact_lastname", type="string", length=50)
      */
     private $contactLastname;
 
     /**
      * @var string
-     *
+     * @Assert\Length(min=4)
+     * @Assert\NotBlank()
      * @ORM\Column(name="contact_firstname", type="string", length=50)
      */
     private $contactFirstname;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="phone", type="integer")
      */
     private $phone;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="message_content", type="text")
      */
     private $messageContent;

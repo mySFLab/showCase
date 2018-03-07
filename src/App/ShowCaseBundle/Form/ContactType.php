@@ -21,16 +21,16 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('contactLastname',null,  [
-                'label' => 'Nom'
+                'label' => 'Nom',
             ])
             ->add('contactFirstname',null,  [
-                'label' => 'Prénom'
+                'label' => 'Prénom',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email'
+                'label' => 'Email',
             ])
             ->add('phone', null, [
-                'label' => 'Téléphone mobile'
+                'label' => 'Téléphone mobile',
             ])
             ->add('method', ChoiceType::class, [
                 'label' => 'Type d\'envoi',
@@ -66,13 +66,7 @@ class ContactType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'app_showcasebundle_contact';
-    }
+
 
 
 }

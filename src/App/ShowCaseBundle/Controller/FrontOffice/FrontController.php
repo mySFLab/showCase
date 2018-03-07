@@ -33,16 +33,19 @@ class FrontController extends Controller
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+
         $response = $this->render('@AppShowCase/front/contact.html.twig', ['form' => $form->createView()]);
         $this->get(CacheManager::class)
             ->addExpirationCacheByDate($response, new \DateTime("+1 hour"), new \DateTime("-2 minutes"));
-        $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
-            $view = $this->renderView(':Emails/contact_message.tpl:contact_message.tpl.html.twig', array('name' => 'super mega name'));
-            $this->get(MailerManager::class)->send($view, 'Look le bo goss','application_de_ton_cheri@gmail.com', 'laurent.brau@gmail.com', $type = 'text/html');
+            $view = $this->renderView(':Emails/contact_message.tpl:contact_message.tpl.html.twig', array('content' => $contact->getMessageContent()));
+            $this->get(MailerManager::class)->send($view, 'Look le bo goss','application_e_ton_cheri@gmail.com', 'laurent.brau@gmail.com', $type = 'text/html');
         }
 
         return $response;
@@ -54,20 +57,21 @@ class FrontController extends Controller
      */
     public function aboutAction(Request $request)
     {
-//        $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
+        $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
         // getResult from elastic search
-        $projects = $this->get('fos_elastica.finder.project.Project')->find('project*');
-            dump($projects, $h = $this->get('fos_elastica.finder.project.Project')->findHybrid('project'));
+        //$projects = $this->get('fos_elastica.finder.project.Project')->find('project*');
+
+        //dump($projects, $h = $this->get('fos_elastica.finder.project.Project')->findHybrid('project'));
         /** var HybridResult $res */
-        $res = $h[0];
+//        $res = $h[0];
 
-        $repositoryManager = $this->get('fos_elastica.manager');
-        $repository = $repositoryManager->getRepository(Project::class);
-        $users = $repository->findWithCustomQuery();
+        //$repositoryManager = $this->get('fos_elastica.manager');
+        //$repository = $repositoryManager->getRepository(Project::class);
+        //$users = $repository->findWithCustomQuery();
 
-        dump($users);die;
 
-        $response = $this->render('@AppShowCase/front/about.html.twig', ['projects' => $projects]);
+        $response = $this->render('@AppShowCase/front/about.html.twig');
+//        $response = $this->render('@AppShowCase/front/about.html.twig', ['projects' => $projects]);
         $this->get(CacheManager::class)
             ->addExpirationCacheByDate($response, new \DateTime("+10 seconds"), new \DateTime("-2 minutes"));
 
@@ -104,7 +108,6 @@ class FrontController extends Controller
 
     public function learningAction(Request $request)
     {
-
         // parameters to template
         $response = $this->render('@AppShowCase/front/learning.html.twig');
 
@@ -122,6 +125,7 @@ class FrontController extends Controller
      */
     public function loginAction(Request $request)
     {
+
         /** @var $session Session */
         $session = $request->getSession();
 

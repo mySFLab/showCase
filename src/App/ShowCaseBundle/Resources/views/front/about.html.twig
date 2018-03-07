@@ -64,19 +64,19 @@
                     </div>
                 </div>
             </div>
-            <table class="table">
-                <caption>Mes projets</caption>
-                <tr>
-                    <th>Projet</th>
-                    <th>Type</th>
-                </tr>
-                {% for project in projects %}
-                <tr>
-                    <td>{{ project.projectName }}</td>
-                    <td>{% if project.professionnalProject %}Professionnel{% else %}Personnel{% endif %}</td>
-                </tr>
-                {% endfor %}
-            </table>
+            {#<table class="table">#}
+                {#<caption>Mes projets</caption>#}
+                {#<tr>#}
+                    {#<th>Projet</th>#}
+                    {#<th>Type</th>#}
+                {#</tr>#}
+                {#{% for project in projects %}#}
+                {#<tr>#}
+                    {#<td>{{ project.projectName }}</td>#}
+                    {#<td>{% if project.professionnalProject %}Professionnel{% else %}Personnel{% endif %}</td>#}
+                {#</tr>#}
+                {#{% endfor %}#}
+            {#</table>#}
         </div>
     </div>
     {% include "@AppShowCase/front/footer.html.twig" %}
@@ -86,27 +86,7 @@
         <script src="{{ asset('js/botstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/hover-dropdown.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/bxslider/jquery.bxslider.js') }}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
         <script src="{{ asset('js/common-scripts.js') }}"></script>
-        <script>
-            //google map
-            function initialize() {
-                var myLatlng = new google.maps.LatLng(48.866667, 2.333333);
-                var mapOptions = {
-                    zoom: 13,
-                    scrollwheel: true,
-                    center: myLatlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    title: 'Hello World!'
-                });
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
     {% endblock javascripts %}
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
