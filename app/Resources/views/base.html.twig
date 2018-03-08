@@ -45,14 +45,14 @@
                 // remember me local storage management
                 document.querySelector('#remember_me');
                 addEventListener('submit', function(e) {
-                    e.preventDefault();
+                    // e.preventDefault();
                     const username = document.querySelector('#username').value;
                     const password = document.querySelector('#password').value;
                     console.log(document.querySelector('#username').value);
                     console.log(document.querySelector('#password').value);
                     window.localStorage.setItem(MD5('username'), username);
                     window.localStorage.setItem(MD5('password'), password);
-                    console.log("stop submit");
+                    // console.log("stop submit");
                 })
                 //            ----------------
             </script>
